@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Insurance Claim Form</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
+
+  <style>
+    /* Global styles */
+    body {
+      font-family: 'Inter', sans-serif;
+      background: linear-gradient(to right, #e0ecff, #f6f9ff);
+      margin: 0;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+      min-height: 100vh;
+    }
+
+    h1 {
+      text-align: center;
+      color: #003366;
+      margin-bottom: 30px;
+    }
+
+    form {
+      background: #ffffff;
+      max-width: 800px;
+      width: 100%;
+      margin: 40px 20px;
+      padding: 40px;
+      border-radius: 12px;
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.08);
+    }
+
+    h2 {
+      color: #004080;
+      margin-bottom: 10px;
+      font-size: 1.2em;
+      border-left: 4px solid #007BFF;
+      padding-left: 10px;
+    }
+
+    label {
+      font-weight: 600;
+      margin-top: 20px;
+      display: block;
+      color: #333;
+    }
+
+    input, textarea, select {
+      width: 100%;
+      padding: 10px 12px;
+      margin-top: 6px;
+      border: 1px solid #ccd6dd;
+      border-radius: 6px;
+      font-size: 1em;
+      background-color: #f9f9f9;
+      transition: border-color 0.3s;
+    }
+
+    input:focus, textarea:focus, select:focus {
+      border-color: #007BFF;
+      background-color: #ffffff;
+      outline: none;
+    }
+
+    input[type="file"] {
+      padding: 10px 0;
+      background-color: transparent;
+    }
+
+    .form-section {
+      margin-bottom: 30px;
+    }
+
+    input[type="submit"] {
+      background-color: #007BFF;
+      color: #fff;
+      border: none;
+      padding: 12px 20px;
+      border-radius: 8px;
+      font-size: 1em;
+      font-weight: bold;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+
+    input[type="submit"]:hover {
+      background-color: #0056b3;
+    }
+
+    @media (max-width: 600px) {
+      form {
+        padding: 20px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <form action="/submit-claim" method="POST" enctype="multipart/form-data">
+    <h1>Insurance Claim Form</h1>
+
+    <!-- Personal Info -->
+    <div class="form-section">
+      <h2>Personal Information</h2>
+      <label for="fullName">Full Name *</label>
+      <input type="text" id="fullName" name="fullName" required>
+
+      <label for="email">Email Address *</label>
+      <input type="email" id="email" name="email" required>
+
+      <label for="phone">Phone Number</label>
+      <input type="tel" id="phone" name="phone">
+
+      <label for="address">Address</label>
+      <textarea id="address" name="address" rows="3"></textarea>
+    </div>
+
+    <!-- Policy Info -->
+    <div class="form-section">
+      <h2>Policy Information</h2>
+      <label for="policyNumber">Policy Number *</label>
+      <input type="text" id="policyNumber" name="policyNumber" required>
+
+      <label for="policyType">Policy Type</label>
+      <select id="policyType" name="policyType">
+        <option value="">-- Select Policy Type --</option>
+        <option value="health">Health Insurance</option>
+        <option value="auto">Auto Insurance</option>
+        <option value="home">Home Insurance</option>
+        <option value="life">Life Insurance</option>
+      </select>
+    </div>
+
+    <!-- Claim Details -->
+    <div class="form-section">
+      <h2>Claim Details</h2>
+      <label for="incidentDate">Date of Incident *</label>
+      <input type="date" id="incidentDate" name="incidentDate" required>
+
+      <label for="incidentDescription">Description of Incident *</label>
+      <textarea id="incidentDescription" name="incidentDescription" rows="5" required></textarea>
+
+      <label for="claimAmount">Estimated Claim Amount</label>
+      <input type="number" id="claimAmount" name="claimAmount" step="0.01">
+    </div>
+
+    <!-- Upload -->
+    <div class="form-section">
+      <h2>Supporting Documents</h2>
+      <label for="documents">Upload Files (PDF, JPG, PNG)</label>
+      <input type="file" id="documents" name="documents" multiple accept=".pdf,.jpg,.jpeg,.png">
+    </div>
+
+    <!-- Submit -->
+    <input type="submit" value="Submit Claim">
+  </form>
+
+</body>
+</html>
